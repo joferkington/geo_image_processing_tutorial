@@ -1,0 +1,9 @@
+name: t20-thu-images
+channels:
+    - conda-forge
+    - defaults
+dependencies:
+    - matplotlib
+    - rasterio
+    - scipy
+    - scikit-image
