@@ -3,7 +3,10 @@ channels:
     - conda-forge
     - defaults
 dependencies:
+    - jupyter
     - matplotlib
     - rasterio
     - scipy
     - scikit-image
+    - fiona
+    - shapely
