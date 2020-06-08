@@ -1,3 +1,6 @@
+"""
+Illustrates saving things back to a geotiff and vectorizing to a shapefile
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 import rasterio as rio
