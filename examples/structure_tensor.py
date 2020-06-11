@@ -9,13 +9,13 @@ from skimage.feature import structure_tensor, structure_tensor_eigvals
 
 from context import data
 
-with rio.open(data.naip.filename, 'r') as src:
+with rio.open(data.naip.lineaments, 'r') as src:
     image = src.read()
 
 # This assumes a grayscale image. For simplicity, we'll just use RGB mean.
 data = image.astype(float).mean(axis=0)
 
-# Compute the structure tensor. This is basically local gradient anisotropy.
+# Compute the structure tensor. This is basically local gradient similarity.
 # We're getting three components at each pixel that correspond to a 2x2
 # symmetric matrix. i.e. [[axx, axy],[axy, ayy]]
 axx, axy, ayy = structure_tensor(data, sigma=2.5, mode='mirror')
@@ -57,9 +57,12 @@ ax1.quiver(x[selection], y[selection], dx[selection], dy[selection],
            angles='xy', units='xy', pivot='middle', color='red', **no_arrow)
 
 
-# Convert to 0 == north, instead of 0 == east
+# We actually want to be perpendictular to the direction of change.. i.e.
+# we want to point _along_ the lineament. Therefore we'll subtract 90 degrees.
+# (Could have just gotten the direction of the smaller eigenvector, but we
+# need to base the magnitude on the largest eigenvector.)
 angle = np.arctan2(dy[selection], dx[selection]) - np.pi/2
-ax2.hist(angle.ravel())
+ax2.hist(angle.ravel(), bins=40)
 
 fig.tight_layout()
 plt.show()
