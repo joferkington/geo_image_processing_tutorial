@@ -1,6 +1,8 @@
 Geologic Image Processing Tutorial - Transform 2020
 --------------------------------------------------
 
+You can find a recording of this tutorial at: https://www.youtube.com/watch?v=3ZvRVB6Eeq4&feature=youtu.be
+
 This repository contains the material for the geologic image processing
 tutorial to be given on June 11th, 2020 at the Transform 2020 virtual
 conference.  It's currently under very active development and is incomplete,
