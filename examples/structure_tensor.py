@@ -43,7 +43,7 @@ selection = ds & selection
 
 # Now we'll visualize the selected (large) structure tensor directions both
 # superimposed on the image and as a rose diagram...
-fig = plt.figure()
+fig = plt.figure(constrained_layout=True)
 ax1 = fig.add_subplot(2, 1, 1)
 ax2 = fig.add_subplot(2, 1, 2, projection='polar', theta_offset=np.pi/2,
                       theta_direction=-1)
@@ -62,7 +62,10 @@ ax1.quiver(x[selection], y[selection], dx[selection], dy[selection],
 # (Could have just gotten the direction of the smaller eigenvector, but we
 # need to base the magnitude on the largest eigenvector.)
 angle = np.arctan2(dy[selection], dx[selection]) - np.pi/2
-ax2.hist(angle.ravel(), bins=40)
+angle = np.concatenate([angle, angle + np.pi]) # Make bidirectional
+ax2.hist(angle.ravel(), bins=120, edgecolor='C0', color='C0')
 
-fig.tight_layout()
+ax1.set(xticks=[], yticks=[])
+ax2.set(yticklabels=[], xticklabels=[], axisbelow=True)
+
 plt.show()
