@@ -1,5 +1,8 @@
 scipy
 numpy
 matplotlib
+scikit-image
+jupyter
 rasterio
-skimage
+fiona
+shapely
