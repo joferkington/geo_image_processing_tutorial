@@ -47,7 +47,8 @@ conda activate t20-thu-images
 ```
 
 or select the environment when starting anaconda from the gui launcher.  After
-that, you'd launch `jupyter` and select the first notebook in this tutorial.
+that, you'd launch `jupyter notebook` and select the first notebook in this
+tutorial.
 
 Manual Setup
 ------------
